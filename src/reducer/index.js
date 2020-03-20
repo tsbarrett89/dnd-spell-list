@@ -1,6 +1,7 @@
 const initialState = {
     spells: [],
-    savedSpells: []
+    savedSpells: [],
+    queryParams: {}
 }
 
 const reducer = (state = initialState, action) => {

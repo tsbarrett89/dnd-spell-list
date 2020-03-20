@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 
 const SearchBar = () => {
 
@@ -11,6 +12,12 @@ const SearchBar = () => {
             <button type='submit'>Search</button>
         </form>
     )
+};
+
+const mapStateToProps = state => {
+    return {
+        queryParams: state.queryParams
+    }
 }
 
-export default SearchBar
+export default connect(mapStateToProps, {})(SearchBar)
