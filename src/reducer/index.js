@@ -1,3 +1,7 @@
+import {
+    SET_SPELLS
+} from '../actions'
+
 const initialState = {
     spells: [],
     savedSpells: [],
@@ -5,7 +9,15 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    return state
+    switch(action.type){
+        case SET_SPELLS:
+            return {
+                ...state,
+                spells: action.payload
+            }
+        default:
+            return state
+    }
 }
 
 export default reducer

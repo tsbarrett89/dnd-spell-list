@@ -3,12 +3,14 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import SearchBar from './SearchBar';
+import SpellCard from './SpellCard';
+import { setSpells } from '../actions'
 
-const SpellList = () => {
+const SpellList = props => {
 
     useEffect(() => {
         axios.get('https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells')
-            .then(res => console.log(res))
+            .then(res => props.setSpells(res.data.results))
             .catch(err => console.log(err))
     }, [])
 
@@ -16,6 +18,11 @@ const SpellList = () => {
         <div>
             <h3>Spell List</h3>
             <SearchBar />
+            {props.spells.map(spell => {
+                return (
+                    <SpellCard key={spell.index} spell={spell}/>
+                )
+            })}
         </div>
     )
 };
@@ -26,4 +33,4 @@ const mapPropsToState = state => {
     }
 }
 
-export default connect(mapPropsToState)(SpellList)
+export default connect(mapPropsToState, { setSpells })(SpellList)
