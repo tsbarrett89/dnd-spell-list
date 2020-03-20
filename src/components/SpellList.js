@@ -10,7 +10,10 @@ const SpellList = props => {
 
     useEffect(() => {
         axios.get('https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells')
-            .then(res => props.setSpells(res.data.results))
+            .then(res => {
+                console.log(res.data)
+                props.setSpells(res.data.results)
+            })
             .catch(err => console.log(err))
     }, [])
 
