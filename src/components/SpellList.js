@@ -30,10 +30,10 @@ const SpellList = props => {
     )
 };
 
-const mapPropsToState = state => {
+const mapStateToProps = state => {
     return {
         spells: state.spells
     }
 }
 
-export default connect(mapPropsToState, { setSpells })(SpellList)
+export default connect(mapStateToProps, { setSpells })(SpellList)

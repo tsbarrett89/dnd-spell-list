@@ -8,7 +8,8 @@ import {
 const initialState = {
     spells: [],
     savedSpells: [],
-    queryParams: {}
+    queryParams: {},
+    errorMessage: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,21 +25,38 @@ const reducer = (state = initialState, action) => {
                 spells: [
                     ...state.spells,
                     state.spells.map(spell => {
-                        if(spell.name === action.payload.name){
+                        if(spell.index === action.payload.index){
+                            console.log(spell.index)
                             return {
                                 ...spell,
                                 isFetching: true
                             }
+                        } else {
+                            return spell
                         }
                     })
-                ]
+                ],
+                errorMessage: ''
             }
         case FETCH_SPELL_SUCCESS:
             return {
                 ...state,
                 spells: [
-                    ...state.spells
+                    ...state.spells,
+                    state.spells.map(spell => {
+                        if(spell.index === action.payload.index){
+                            console.log(spell.index)
+                            return action.payload
+                        } else {
+                            return spell
+                        }
+                    })
                 ]
+            }
+        case FETCH_SPELL_FAILURE:
+            return {
+                ...state,
+                errorMessage: action.payload
             }
         default:
             return state

@@ -1,14 +1,14 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 
 import { fetchSpellData } from '../actions'
 
 const SpellCard = props => {
-    const spell = props.spells.find(indSpell => indSpell.name === props.spell.name)
 
     return (
         <div onClick={() => props.fetchSpellData(props.spell.index)}>
             <p>{props.spell.name}</p>
+            {props.spell.isFetching && <p>fetching spell data</p>}
         </div>
     )
 };
