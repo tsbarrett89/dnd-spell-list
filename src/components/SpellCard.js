@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 const SpellCard = props => {
 
@@ -9,4 +10,10 @@ const SpellCard = props => {
     )
 };
 
-export default SpellCard
+const mapPropsToState = state => {
+    return {
+        spells: state.spells
+    }
+}
+
+export default connect(mapPropsToState, {})(SpellCard)
