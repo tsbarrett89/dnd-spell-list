@@ -7,13 +7,6 @@ export const FETCH_SPELL_FAILURE = "FETCH_SPELL_FAILURE"
 export const FETCH_SPELLS_SUCCESS = "FETCH_SPELLS_SUCCESS"
 export const FETCH_SPELLS_FAILURE = "FETCH_SPELL_FAILURE"
 
-export const setSpells = (spells) => {
-    return {
-        type: SET_SPELLS,
-        payload: spells
-    }
-}
-
 export const fetchSpellData = spell => dispatch => {
     dispatch({ type: FETCH_SPELLS_START, payload: spell })
     axios

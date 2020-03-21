@@ -17,11 +17,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case SET_SPELLS:
-            return {
-                ...state,
-                spells: action.payload
-            }
         case FETCH_SPELLS_START:
             return {
                 ...state,

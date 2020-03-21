@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
 
-import { fetchSpellData } from '../actions'
 import SpellCardExpanded from './SpellCardExpanded'
 
 const SpellCard = props => {
@@ -15,10 +13,4 @@ const SpellCard = props => {
     )
 };
 
-const mapStateToProps = state => {
-    return {
-        spells: state.spells
-    }
-}
-
-export default connect(mapStateToProps, { fetchSpellData })(SpellCard)
+export default SpellCard

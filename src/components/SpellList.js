@@ -7,15 +7,7 @@ import SpellCard from './SpellCard';
 import { setSpells } from '../actions'
 
 const SpellList = props => {
-
-    useEffect(() => {
-        axios.get('https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells')
-            .then(res => {
-                console.log(res.data)
-                props.setSpells(res.data.results)
-            })
-            .catch(err => console.log(err))
-    }, [])
+    props.fetchSpellData()
 
     return (
         <div>
@@ -36,4 +28,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { setSpells })(SpellList)
+export default connect(mapStateToProps, { fetchSpellData })(SpellList)
