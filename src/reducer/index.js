@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
                         }
                     })
                 ],
-                errorMessage: ''
+                errorMessage: 'f'
             }
         case FETCH_SPELL_SUCCESS:
             return {
