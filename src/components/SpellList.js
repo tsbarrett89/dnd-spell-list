@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import SearchBar from './SearchBar';
 import SpellCard from './SpellCard';
-import { setSpells } from '../actions'
+import { fetchSpellData } from '../actions'
 
 const SpellList = props => {
-    props.fetchSpellData()
+    useEffect(() => {
+        props.fetchSpellData()
+    }, [])
 
     return (
         <div>
