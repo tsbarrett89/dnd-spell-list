@@ -1,14 +1,17 @@
 import {
     SET_SPELLS,
-    FETCH_SPELL_START,
+    FETCH_SPELLS_START,
     FETCH_SPELL_SUCCESS,
-    FETCH_SPELL_FAILURE
+    FETCH_SPELL_FAILURE,
+    FETCH_SPELLS_SUCCESS,
+    FETCH_SPELLS_FAILURE
 } from '../actions'
 
 const initialState = {
     spells: [],
     savedSpells: [],
     queryParams: {},
+    isFetching: false,
     errorMessage: ''
 }
 
@@ -19,43 +22,34 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 spells: action.payload
             }
-        case FETCH_SPELL_START:
+        case FETCH_SPELLS_START:
             return {
                 ...state,
-                spells: [
-                    ...state.spells,
-                    state.spells.map(spell => {
-                        if(spell.index === action.payload.index){
-                            console.log(spell.index)
-                            return {
-                                ...spell,
-                                isFetching: true
-                            }
-                        } else {
-                            return spell
-                        }
-                    })
-                ],
-                errorMessage: 'f'
+                isFetching: true
             }
         case FETCH_SPELL_SUCCESS:
             return {
                 ...state,
                 spells: [
                     ...state.spells,
-                    state.spells.map(spell => {
-                        if(spell.index === action.payload.index){
-                            console.log(spell.index)
-                            return action.payload
-                        } else {
-                            return spell
-                        }
-                    })
+                    action.payload
                 ]
             }
         case FETCH_SPELL_FAILURE:
             return {
                 ...state,
+                errorMessage: action.payload
+            }
+        case FETCH_SPELLS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                errorMessage: ''
+            }
+        case FETCH_SPELLS_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
                 errorMessage: action.payload
             }
         default:
