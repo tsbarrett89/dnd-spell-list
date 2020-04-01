@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-
-import SpellCardExpanded from './SpellCardExpanded'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SpellCard = props => {
 
     return (
-        <div onClick={() => props.fetchSpellData(props.spell.index)}>
+        <div>
             <p>{props.spell.name}</p>
-            {props.spell.level && <p>{props.spell.level}</p>}
+            <Link to={`/${props.spell.index}`}>details</Link>
         </div>
     )
 };
