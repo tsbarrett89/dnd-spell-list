@@ -13,12 +13,7 @@ export const fetchSpellData = spell => dispatch => {
         .get(`https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells`)
         .then(res => {
             console.log(res.data)
-            res.data.results.forEach(spell => {
-                axios.get(`https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells/${spell.index}`)
-                    .then(res => dispatch({ type: FETCH_SPELL_SUCCESS, payload: res.data}))
-                    .catch(err => dispatch({ type: FETCH_SPELL_FAILURE, payload: `Failed with ${err.status} status code`}))
-            })
-            dispatch({ type: FETCH_SPELLS_SUCCESS })
+            dispatch({ type: SET_SPELLS, payload: res.data.results})
         })
         .catch(err => dispatch({ type: FETCH_SPELLS_FAILURE, payload: `Failed with ${err.status} status code` }))
 }
