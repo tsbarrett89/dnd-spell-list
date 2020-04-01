@@ -1,10 +1,10 @@
 import {
-    SET_SPELLS,
-    FETCH_SPELLS_START,
+    SET_SPELLS_START,
+    SET_SPELLS_SUCCESS,
+    SET_SPELLS_FAILURE,
+    FETCH_SPELL_START,
     FETCH_SPELL_SUCCESS,
     FETCH_SPELL_FAILURE,
-    FETCH_SPELLS_SUCCESS,
-    FETCH_SPELLS_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -17,12 +17,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case SET_SPELLS:
+        case SET_SPELLS_SUCCESS:
             return {
                 ...state,
                 spells: action.payload
             }
-        case FETCH_SPELLS_START:
+        case SET_SPELLS_START:
             return {
                 ...state,
                 isFetching: true
@@ -40,13 +40,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 errorMessage: action.payload
             }
-        case FETCH_SPELLS_SUCCESS:
+        case SET_SPELLS_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 errorMessage: ''
             }
-        case FETCH_SPELLS_FAILURE:
+        case SET_SPELLS_FAILURE:
             return {
                 ...state,
                 isFetching: false,

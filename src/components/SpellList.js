@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import SearchBar from './SearchBar';
 import SpellCard from './SpellCard';
-import { fetchSpellData } from '../actions'
+import { fetchSpells } from '../actions'
 
 const SpellList = props => {
     useEffect(() => {
-        props.fetchSpellData()
+        props.fetchSpells()
     }, [])
 
     return (
@@ -29,4 +29,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchSpellData })(SpellList)
+export default connect(mapStateToProps, { fetchSpells })(SpellList)
