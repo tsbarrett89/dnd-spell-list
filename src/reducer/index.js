@@ -32,7 +32,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 spells: [
                     ...state.spells,
-                    action.payload
+                    state.spells.map(spell => {
+                        if(spell.index === action.payload.index){
+                            return action.payload
+                        } else {
+                            return spell
+                        }
+                    })
                 ]
             }
         case FETCH_SPELL_FAILURE:

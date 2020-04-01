@@ -20,4 +20,11 @@ export const fetchSpells = spell => dispatch => {
 
 export const fetchSpellData = spell => dispatch => {
     dispatch({ type: FETCH_SPELL_START})
+    axios
+        .get(`https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells/${spell}`)
+        .then(res => {
+            console.log(res.data)
+            dispatch({ type: FETCH_SPELL_SUCCESS, payload: res.data })
+        })
+        .catch(err => dispatch({ type: FETCH_SPELL_FAILURE, payload: `Failed with a ${err.status} status code`}))
 }
