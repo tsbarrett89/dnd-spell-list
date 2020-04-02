@@ -5,6 +5,8 @@ import SearchBar from './SearchBar';
 import SpellCard from './SpellCard';
 import { fetchSpells } from '../actions'
 
+import { SpellListStyled } from '../styling/spellListStyle'
+
 const SpellList = props => {
     const [filteredSpells, setFilteredSpells] = useState(props.spells)
 
@@ -13,7 +15,7 @@ const SpellList = props => {
     }, [])
 
     return (
-        <div>
+        <SpellListStyled>
             <h3>Spell List</h3>
             {props.isFetching ? <p>Loading Spells</p> : 
                 <SearchBar 
@@ -30,7 +32,7 @@ const SpellList = props => {
                     />
                 )
             })}
-        </div>
+        </SpellListStyled>
     )
 };
 
