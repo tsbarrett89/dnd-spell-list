@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SpellCardStyled = styled.div `
-    width: 40%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 1%;

@@ -1,7 +1,8 @@
 import {
     SET_SPELLS_START,
     SET_SPELLS_SUCCESS,
-    SET_SPELLS_FAILURE
+    SET_SPELLS_FAILURE,
+    SAVE_SPELL
 } from '../actions'
 
 const initialState = {
@@ -32,6 +33,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 errorMessage: action.payload
+            }
+        case SAVE_SPELL:
+            console.log(state.savedSpells)
+            return {
+                ...state,
+                savedSpells: [
+                    ...state.savedSpells,
+                    action.payload
+                ]
             }
         default:
             return state
