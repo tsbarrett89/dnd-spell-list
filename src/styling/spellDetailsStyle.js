@@ -13,6 +13,7 @@ export const SpellDetailsCardStyled = styled.div `
     border: 1px solid #000772;
     border-radius: 8px;
     padding: 2%;
+    margin-top: 1%;
 
     p {
         margin: 1% auto;

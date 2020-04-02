@@ -1,12 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const SavedSpells = () => {
+import SavedSpellCard from './SavedSpellCard'
+
+import { SpellDetailsStyled } from '../styling/spellDetailsStyle'
+
+const SavedSpells = props => {
 
     return (
-        <div>
+        <SpellDetailsStyled>
             <h3>Spell Sheet</h3>
-        </div>
+            {props.savedSpells.map((spell, index) => {
+                return (
+                    <SavedSpellCard
+                        key={index}
+                        spell={spell}
+                    />
+                )
+            })}
+        </SpellDetailsStyled>
     )
 };
 
