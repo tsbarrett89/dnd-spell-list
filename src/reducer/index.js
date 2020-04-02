@@ -24,7 +24,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 spells: action.payload,
-                filteredSpells: action.payload
+                filteredSpells: action.payload,
+                isFetching: false
             }
         case SET_SPELLS_FAILURE:
             return {

@@ -7,6 +7,7 @@ import { fetchSpells } from '../actions'
 
 const SpellList = props => {
     const [filteredSpells, setFilteredSpells] = useState(props.spells)
+
     useEffect(() => {
         props.fetchSpells()
     }, [])
@@ -14,9 +15,14 @@ const SpellList = props => {
     return (
         <div>
             <h3>Spell List</h3>
-            <SearchBar spells={props.spells} setFilteredSpells={setFilteredSpells} />
-            {filteredSpells.length === 0 ? <p>Loading Spells</p> :
-            filteredSpells.map((spell, index) => {
+            {props.isFetching ? <p>Loading Spells</p> : 
+                <SearchBar 
+                    spells={props.spells} 
+                    setFilteredSpells={setFilteredSpells} 
+                />
+            }
+            
+            {filteredSpells.map((spell, index) => {
                 return (
                     <SpellCard
                         key={index}
@@ -30,7 +36,8 @@ const SpellList = props => {
 
 const mapStateToProps = state => {
     return {
-        spells: state.spells
+        spells: state.spells,
+        isFetching: state.isFetching
     }
 }
 
