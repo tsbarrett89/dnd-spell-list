@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { SearchBarStyled } from '../styling/searchStyle'
+
 const SearchBar = props => {
 
     const handleChange = e => {
@@ -15,15 +17,17 @@ const SearchBar = props => {
     }
 
     return (
-        <div>
+        <SearchBarStyled>
+            <p>Search by Spell Name</p>
             <form onChange={handleChange}>
                 <input
                     name='query'
                     placeholder='All Spells'
                 />
             </form>
+            <p>Or</p>
             <button onClick={allSpells}>Show All Spells</button>
-        </div>
+        </SearchBarStyled>
         
     )
 };
