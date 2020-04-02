@@ -13,7 +13,7 @@ function App() {
 
       <Route exact path='/spells' component={SpellList} />
       <Route path='/spell-sheet' component={SavedSpells} />
-      <Route path='/:spellIndex' component={SpellCardDetails} />
+      <Route path='/spells/:spellIndex' component={SpellCardDetails} />
     </div>
   );
 }

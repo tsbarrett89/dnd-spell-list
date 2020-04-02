@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const SpellCardExpanded = () => {
     const { spellIndex } = useParams();
+    const [loading, setLoading] = useState(false)
     const [spell, setSpell] = useState({
         name: '',
         desc: [],
@@ -24,23 +25,28 @@ const SpellCardExpanded = () => {
             .then(res => {
                 console.log(res.data)
                 setSpell(res.data)
+                setLoading(!loading)
             })
     }, [])
 
     return (
         <div>
-            <p>{spell.name}</p>
-            <p>{spell.level} level</p>
-            <p>{spell.school.name}</p>
-            <p>Casting Time: {spell.casting_time}</p>
-            <p>Range: {spell.range}</p>
-            <p>Components: {spell.components.map(comp => comp)}</p>
-            <p>Duration: {spell.duration}</p>
-            <div>{spell.desc.map(p => {
-                return <p>{p}</p>
-            })
-            
-            }</div>
+            {!loading ? <p>Loading spell</p> :
+            <div>
+                <p>{spell.name}</p>
+                <p>{spell.level} level</p>
+                <p>{spell.school.name}</p>
+                <p>Casting Time: {spell.casting_time}</p>
+                <p>Range: {spell.range}</p>
+                <p>Components: {spell.components.map(comp => comp)}</p>
+                <p>Duration: {spell.duration}</p>
+                <div>{spell.desc.map((p, index) => {
+                    return <p key={index}>{p}</p>
+                })
+                
+                }</div>
+            </div>
+            }
         </div>
     )
 }

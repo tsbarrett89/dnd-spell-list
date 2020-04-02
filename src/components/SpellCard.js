@@ -6,7 +6,7 @@ const SpellCard = props => {
     return (
         <div>
             <p>{props.spell.name}</p>
-            <Link to={`/${props.spell.index}`}>details</Link>
+            <Link to={`/spells/${props.spell.index}`}>details</Link>
         </div>
     )
 };
