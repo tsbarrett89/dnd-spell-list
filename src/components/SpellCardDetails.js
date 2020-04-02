@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
 
+import { SpellDetailsStyled } from '../styling/spellDetailsStyle'
+
 const SpellCardExpanded = () => {
     const { spellIndex } = useParams();
     const [loading, setLoading] = useState(false)
@@ -30,7 +32,7 @@ const SpellCardExpanded = () => {
     }, [])
 
     return (
-        <div>
+        <SpellDetailsStyled>
             {!loading ? <p>Loading spell</p> :
             <div>
                 <p>{spell.name}</p>
@@ -47,7 +49,7 @@ const SpellCardExpanded = () => {
                 }</div>
             </div>
             }
-        </div>
+        </SpellDetailsStyled>
     )
 }
 
