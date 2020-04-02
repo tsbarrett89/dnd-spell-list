@@ -1,18 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const SearchBar = () => {
+const SearchBar = props => {
+
+    const handleChange = e => {
+        e.preventDefault()
+        props.setFilteredSpells(props.spells.filter(spell => 
+            spell.name.toLowerCase().includes(e.target.value.toLowerCase())))
+    }
 
     return (
         <div>
-            <form>
+            <form onChange={handleChange}>
                 <input
                     name='query'
                     placeholder='All Spells'
                 />
                 <button type='submit'>Search by name</button>
             </form>
-            <form>
+            {/* <form>
                 <select>
                     <option name=''>Class</option>
                     <option name='bard'>Bard</option>
@@ -38,7 +44,7 @@ const SearchBar = () => {
                     <option name='9'>ninth level</option>
                 </select>
                 <button type='submit'>Set Search Parameters</button>
-            </form>
+            </form> */}
         </div>
         
     )

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import SearchBar from './SearchBar';
 import SpellCard from './SpellCard';
-import { fetchSpells, fetchSpellData } from '../actions'
+import { fetchSpells } from '../actions'
 
 const SpellList = props => {
+    const [filteredSpells, setFilteredSpells] = useState(props.spells)
     useEffect(() => {
         props.fetchSpells()
     }, [])
@@ -13,13 +14,13 @@ const SpellList = props => {
     return (
         <div>
             <h3>Spell List</h3>
-            <SearchBar />
-            {props.spells.map((spell, index) => {
+            <SearchBar spells={props.spells} setFilteredSpells={setFilteredSpells} />
+            {filteredSpells.length === 0 ? <p>Loading Spells</p> :
+            filteredSpells.map((spell, index) => {
                 return (
                     <SpellCard
                         key={index}
                         spell={spell}
-                        fetchSpellData={props.fetchSpellData}
                     />
                 )
             })}
@@ -33,4 +34,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchSpells, fetchSpellData })(SpellList)
+export default connect(mapStateToProps, { fetchSpells })(SpellList)
