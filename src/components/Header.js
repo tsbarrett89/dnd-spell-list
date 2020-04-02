@@ -1,14 +1,16 @@
-import React from 'react'
+import React from 'react';
+
+import { HeaderStyled } from '../styling/headerstyle';
 
 import NavBar from './NavBar';
 
 const Header = () => {
 
     return (
-        <div>
+        <HeaderStyled>
             <h1>Dungeons and Dragons Spell List Creator</h1>
             <NavBar />
-        </div>
+        </HeaderStyled>
     )
 }
 

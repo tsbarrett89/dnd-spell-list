@@ -11,7 +11,7 @@ function App() {
     <div>
       <Header />
 
-      <Route exact path='/' component={SpellList} />
+      <Route exact path='/spells' component={SpellList} />
       <Route path='/spell-sheet' component={SavedSpells} />
       <Route path='/:spellIndex' component={SpellCardDetails} />
     </div>
