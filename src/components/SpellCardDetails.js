@@ -26,7 +26,7 @@ const SpellCardExpanded = props => {
 
     useEffect(() => {
         axios
-            .get(`https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells/${spellIndex}`)
+            .get(`https://www.dnd5eapi.co/api/spells/${spellIndex}`)
             .then(res => {
                 console.log(res.data)
                 setSpell(res.data)

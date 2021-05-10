@@ -8,7 +8,7 @@ export const SAVE_SPELL = "SAVE_SPELL"
 export const fetchSpells = spell => dispatch => {
     dispatch({ type: SET_SPELLS_START, payload: spell })
     axios
-        .get(`https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/spells`)
+        .get(`https://www.dnd5eapi.co/api/spells`)
         .then(res => {
             console.log(res.data)
             dispatch({ type: SET_SPELLS_SUCCESS, payload: res.data.results})
